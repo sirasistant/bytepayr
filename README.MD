@@ -27,7 +27,7 @@ To start this server, issue the command `node app.js`
 # Usage
 
 This server exposes a REST API. In order to create a new transaction for a specific client, you have to perform a HTTP POST request with a json payload with this structure:
-function create_btepayr_request($address, $amount, $description, $username, $password)
+
 ```
 {
         "amount" : AMOUNT TO PAY IN SATOSHI,
