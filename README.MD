@@ -9,8 +9,8 @@ When it finishes installing, you have to create a config.cnf file in the root of
 
 ```
 {
- 	"username" : "PUT HERE THE USERNAME OF THE ADMINISTRATOR",
- 	"password" : "PUT HERE THE PASSWORD OF THE ADMINISTRATOR",
+ 	"username" : "PUT HERE THE USERNAME OF THE PLATFORM ADMINISTRATOR",
+ 	"password" : "PUT HERE THE PASSWORD OF THE PLATFORM ADMINISTRATOR",
  	"minimumConfirmations": PUT HERE THE NUMBER OF CONFIRMATIONS NEEDED TO VALIDATE A TRANSACTION,
  	"secret"   : "PUT HERE A RANDOM SECRET FOR THE COOKIE ENCRYPTION SYSTEM",
  	"connector":{
