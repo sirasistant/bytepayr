@@ -1,0 +1,24 @@
+<h1>Transaction list</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Address</th>
+        <th>Amount to pay</th>
+        <th>Amount paid</th>
+        <th>Amount unconfirmed</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="transaction in transactions">
+        <td>{{transaction._id}}</td>
+        <td>{{transaction.address}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.paid}}</td>
+        <td>{{transaction.unconfirmed}}</td>
+        <td>{{transaction.state}}</td>
+    </tr>
+
+    </tbody>
+</table>

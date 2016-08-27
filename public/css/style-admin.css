@@ -1,0 +1,95 @@
+/* Admin section*/
+
+
+.club-images h3 {
+    margin-top: 0px;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.navbar-brand-image img{
+    height: 50px;
+}
+
+.navbar-default{
+    background-color: #1E1E21;
+    border-color:#222;
+}
+
+a{
+    color:#DAA449
+}
+
+body{
+    color:white;
+    background-color: #1E1E21;
+}
+.navbar-default .navbar-collapse{
+    border-color: #222 ;
+}
+
+.navbar-default .navbar-right > li  a:hover, .navbar-default .navbar-right > li  a:focus {
+    background-color: #444;
+    color:#DAA449;
+}
+
+.navbar-default .sidebar-nav  li  a:hover, .navbar-default .sidebar-nav  li  a:focus {
+    background-color: #444;
+    color:#DAA449;
+}
+
+legend{
+    color:white
+}
+
+.modal{
+    color:black
+}
+
+.square-image{
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+}
+.square-image img{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-cell{
+    padding: 5px 5px;
+    overflow: hidden;
+    border: 3px solid #202022;
+    border-radius: 5px;
+}
+
+.user-in{
+    border: 3px solid #DAA449;
+}
+
+.user-cell h3{
+    margin-top: 0px;
+}
+
+.user-cell h6{
+    margin-top: 10px;
+}
+
+.user-cell .name{
+    color:#DDD;
+}
+
+.user-cell p{
+    margin: 0px;
+}
+
+.user-cell .square-image{
+}
+
+.user-cell .cell-text{
+    padding-right: 10px;
+}

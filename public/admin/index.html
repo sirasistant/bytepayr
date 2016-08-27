@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BytePayr Administration</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- SB admin -->
+    <link href="../css/sb-admin-2.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Font awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+    <script src="../js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+    <script src="../js/datetime-picker.min.js"></script>
+    <script src="../js/angucomplete-alt.min.js"></script>
+    <script src="../js/qrcode.js"></script>
+    <script src="../js/angular-qrcode.js"></script>
+    <script src="../js/angular-qr.js"></script>
+    <script src="BytePayrAdmin.js"></script>
+    <script src="../js/sha256.js"></script>
+</head>
+
+<body>
+
+<div ng-app="BytePayrAdmin" id="wrapper">
+
+    <!-- Navigation -->
+    <nav ng-controller="sidebarController" class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand-image" href="javascript:void(0)"><img style="height: 40px; margin-top: 5px; margin-left: 10px" src="../assets/brand.png"/></a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.dropdown -->
+            <li ng-show="isLoggedIn()" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a ng-click="logout()" href="javascript:void(0)"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse collapse">
+                <ul class="nav" id="side-menu">
+                    <li ng-show="!isLoggedIn()">
+                        <a ng-class="{active:currentPath=='/login'}" href="#/login"><i class="fa fa-user"></i> Login</a>
+                    </li>
+                    <li ng-show="isLoggedIn()">
+                        <a ng-class="{active:currentPath=='/transactions'}" href="#/transactions"><i class="fa fa-bar-chart"></i> Transactions</a>
+                    </li>
+                    <li ng-show="isLoggedIn()">
+                        <a ng-class="{active:currentPath=='/balance'}" href="#/balance"><i class="fa fa-btc"></i> Balance</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div style="padding-bottom: 50px" ng-view></div>
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+</body>
+
+</html>

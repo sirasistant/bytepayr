@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BytePayr checkout</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Font awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+    <script src="js/datetime-picker.min.js"></script>
+    <script src="js/angucomplete-alt.min.js"></script>
+    <script src="js/qrcode.js"></script>
+    <script src="js/angular-qrcode.js"></script>
+    <script src="js/angular-qr.js"></script>
+    <script src="BytePayr.js"></script>
+    <script src="js/sha256.js"></script>
+</head>
+
+<body>
+
+<div ng-app="BytePayr">
+    <div ng-controller="transactionController" class="container">
+        <div class="col-md-8 col-md-offset-2 ">
+            <header>
+                <img class="brand" src="assets/brand.png">
+            </header>
+            <article>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="amount">
+                            <h4 class="inline">Amount to pay:</h4>
+                            <div class="pull-right">
+                                <h4 class="inline">{{transaction.bitcoinAmount}} <i class="fa fa-btc"
+                                                                                   aria-hidden="true"></i></h4>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <h3>Description</h3>
+                            <p ng-bind-html="transaction.description"></p>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="qrContainer">
+                            <div id="addressContainer" class="input-group">
+                              <span class="input-group-btn">
+                                <button class="btn btn-secondary" ng-click="copyAddress()" type="button"><i
+                                        class="fa fa-clipboard" aria-hidden="true"></i></button>
+                              </span>
+                                <input type="text" readonly="readonly" class="form-control"
+                                       value="{{transaction.address}}">
+                            </div>
+                            <qr text="'bitcoin:'+transaction.address"></qr>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="paymentStatus">
+                            <h3>Payment status</h3>
+                            <div class="progress">
+                                <uib-progressbar class="progress-striped active" max="100" value="progress"
+                                                 type="{{transaction.state==='PAID'?'success':'primary'}}"></uib-progressbar>
+                            </div>
+                            <div class="center">
+                                <p>{{paymentStatus}}</p>
+                            </div>
+                            <button id="nextButton" ng-show="transaction.state==='PAID'" class="btn btn-success btn-lg pull-right" ng-click="finish()">Next</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <a href="{{backUrl}}">Go back to the store</a>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+
+</body>
+
+</html>
