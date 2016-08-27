@@ -52,7 +52,7 @@ To check the status of a specific transaction, perform a HTTP GET request to the
 }
 ```
 
-## [License]
+## License
 
 The MIT License (MIT)
 Copyright (c) 2016 Álvaro Rodríguez Villalba https://github.com/sirasistant
