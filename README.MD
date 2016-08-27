@@ -32,8 +32,8 @@ This server exposes a REST API. In order to create a new transaction for a speci
 {
         "amount" : AMOUNT TO PAY IN SATOSHI,
         "description" : "A DESCRIPTION OF THE PRODUCT FOR THE PAYMENT FRONTEND. HTML IS VALID",
-        "username" => "USERNAME OF THE ADMINISTRATOR",
-        "password" => "PASSWORD OF THE ADMINISTRATOR"
+        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
  }
 ```
 To the endpoint /api/transactions/create. This request will return an object in json format with a property called "_id". This property will contain the transaction id and is needed to check the status of the transaction.
