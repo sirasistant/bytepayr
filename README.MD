@@ -52,6 +52,10 @@ To check the status of a specific transaction, perform a HTTP GET request to the
 }
 ```
 
+If you want the user to be redirected to a payment frontend with all the details of the transaction, redirect his browser to the root hostname of the platform with the following query string: `?transaction=TRANSACTION_ID&backurl=BACK_URL&successurl=SUCCESS_URL` .
+
+To perform administration tasks such as redeeming the money from the wallet, open in your browser de address of the platform followed by the `/admin` path. This path contains the administration tool protected by user and password.
+
 ## License
 
 The MIT License (MIT)
