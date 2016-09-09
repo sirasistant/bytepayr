@@ -1,4 +1,4 @@
-#Bytepayr
+#BytePayr
 ![BUILD](https://img.shields.io/badge/build-passing-green.svg)
 ![MIT](https://img.shields.io/dub/l/vibe-d.svg)
 
