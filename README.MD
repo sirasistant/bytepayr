@@ -1,4 +1,6 @@
-# Description
+#Bytepayr
+![BUILD](https://img.shields.io/badge/build-passing-green.svg)
+![MIT](https://img.shields.io/dub/l/vibe-d.svg)
 
 This project aims to the development of an open source platform that
 enables physical and online stores to accept payments using virtual coins easily,
@@ -12,7 +14,7 @@ the customer and the store simple methods to obtain feedback about the status
 of his transactions, and enables the continuous navigation flow in the
 scenario of the store being an online one.
 
-# Getting Started
+## Getting Started
 
 How to start a BytePayr server:
 
@@ -38,9 +40,9 @@ When it finishes installing, you have to create a `config.cnf` file in the root 
 
 To start this server, issue the command `node app.js`
 
-# Usage
+## Usage
 
-## REST
+### REST
 
 This server exposes a REST API. In order to create a new transaction for a specific client, you have to perform a HTTP POST request with a json payload with this structure:
 
@@ -92,7 +94,7 @@ To delete a specific transaction, perform a HTTP DELETE request to the endpoint 
 ```
 This request will remove the transaction from the database.
 
-## Socket.IO
+### Socket.IO
 
 This platform also exposes a Socket.IO API. If you want to get updates on the transaction state, connect to the server and send an event with name `subscribe` with the following payload:
 
@@ -117,7 +119,7 @@ When your socket is subscribed to one or multiple transactions, you'll receive e
 }
 ```
 
-# License
+## License
 
 The MIT License (MIT)
 Copyright (c) 2016 Álvaro Rodríguez Villalba https://github.com/sirasistant
