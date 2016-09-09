@@ -5,16 +5,16 @@ var express = require('express'),
     router = express.Router(),
     bruteforce = require("../bruteforce.js");
 
-router.get('/login',authController.hasCookie);
+router.get('/login',bruteforce.prevent,authController.hasCookie);
 
 router.post('/login',bruteforce.prevent,authController.setCookie);
 
 router.delete('/login',authController.deleteCookie);
 
-router.get('/transactions',authController.checkCookie,transactionsController.list);
+router.get('/transactions',bruteforce.prevent,authController.checkCookie,transactionsController.list);
 
-router.get('/balance',authController.checkCookie,walletConnector.balance);
+router.get('/balance',bruteforce.prevent,authController.checkCookie,walletConnector.balance);
 
-router.post('/transfer',authController.checkCookie,walletConnector.transfer);
+router.post('/transfer',bruteforce.prevent,authController.checkCookie,walletConnector.transfer);
 
 module.exports = router;

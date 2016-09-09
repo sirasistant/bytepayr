@@ -1,5 +1,6 @@
 var check = require('check-types'),
-fs = require('fs');
+	fs = require('fs'),
+	bruteforce = require("../bruteforce.js");
 
 var config = JSON.parse(fs.readFileSync('config.cnf', 'utf8'));
 
@@ -8,7 +9,9 @@ exports.checkUsernameAndPass = function(req,res,next){
 		var username = req.body.username;
 		var password = req.body.password;
 		if(username===config.username && password === config.password){
-			next();
+			req.brute.reset(function () {
+				next();
+			});
 		}else{
 			res.status(403).send("Not authorized");
 		}
@@ -28,7 +31,9 @@ exports.setCookie = function(req,res){
 		var password = req.body.password;
 		if(username===config.username && password === config.password){
 			req.session.loggedIn = true;
-			res.send("Success");
+			req.brute.reset(function () {
+				res.send("Success");
+			});
 		}else{
 			res.status(403).send("Not authorized");
 		}
@@ -44,7 +49,9 @@ exports.deleteCookie = function(req,res){
 
 exports.checkCookie = function (req, res, next) {
 	if(req.session.loggedIn)
-		next();
+		req.brute.reset(function () {
+			next();
+		});
 	else
 		res.status(403).send("Not logged in");
 };

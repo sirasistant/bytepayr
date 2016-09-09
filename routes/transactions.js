@@ -1,13 +1,14 @@
 var express = require('express'),
 	transactionsController=require('../controllers/transactionsController'),
 	authController=require('../controllers/authController'),
-	router = express.Router();
+	router = express.Router(),
+	bruteforce = require("../bruteforce.js");
 
-router.post('/create',authController.checkUsernameAndPass, transactionsController.create);
+router.post('/create',bruteforce.prevent,authController.checkUsernameAndPass, transactionsController.create);
 
-router.post('/:id/cancel',authController.checkUsernameAndPass, transactionsController.cancel);
+router.post('/:id/cancel',bruteforce.prevent,authController.checkUsernameAndPass, transactionsController.cancel);
 
-router.delete('/:id',authController.checkUsernameAndPass, transactionsController.delete);
+router.delete('/:id',bruteforce.prevent,authController.checkUsernameAndPass, transactionsController.delete);
 
 router.get('/:id', transactionsController.show);
 
