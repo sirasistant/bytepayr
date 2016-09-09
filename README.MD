@@ -1,4 +1,4 @@
-#BytePayr
+<img src="https://raw.githubusercontent.com/sirasistant/bytepayr-web/master/public/assets/brand.png" alt="BytePayr"  height="60"><br/>
 ![BUILD](https://img.shields.io/badge/build-passing-green.svg)
 ![MIT](https://img.shields.io/dub/l/vibe-d.svg)
 
