@@ -1,3 +1,17 @@
+# Description
+
+This project aims to the development of an open source platform that
+enables physical and online stores to accept payments using virtual coins easily,
+reliably, transparently and free of charge. 
+The goal of this platform is to allow, through a programmatically
+accessible interface, the creation, lookup and manipulation of transactions in a
+simple and approachable way, and to offer the final user (the customer) an
+intuitive interface with which to pay with his wallets, regardless of whether they
+are on his mobile device, computer or web services. The service provides
+the customer and the store simple methods to obtain feedback about the status
+of his transactions, and enables the continuous navigation flow in the
+scenario of the store being an online one.
+
 # Getting Started
 
 How to start a BytePayr server:
