@@ -1,11 +1,25 @@
+# Description
+
+This project aims to the development of an open source platform that
+enables physical and online stores to accept payments using virtual coins easily,
+reliably, transparently and free of charge. 
+The goal of this platform is to allow, through a programmatically
+accessible interface, the creation, lookup and manipulation of transactions in a
+simple and approachable way, and to offer the final user (the customer) an
+intuitive interface with which to pay with his wallets, regardless of whether they
+are on his mobile device, computer or web services. The service provides
+the customer and the store simple methods to obtain feedback about the status
+of his transactions, and enables the continuous navigation flow in the
+scenario of the store being an online one.
+
 # Getting Started
 
 How to start a BytePayr server:
 
-Download or clone the [ByteWallet](https://github.com/sirasistant/ByteWallet) repository, and follow the README instructions to deploy it in you machine.
+This projects relies on the Socket.IO accessible bitcoin wallet [ByteWallet](https://github.com/sirasistant/ByteWallet). Download or clone the [ByteWallet](https://github.com/sirasistant/ByteWallet) repository, and follow the README instructions to deploy it in you machine.
 Once you have your socket-based wallet running, download or clone this repository in your machine.
 Go to the folder containing this repository, and issue the command `npm install`. You should have a working version of Node.JS and NPM installed in your system.
-When it finishes installing, you have to create a config.cnf file in the root of this repository. This config.cnf file must be a json-valid file with the following structure:
+When it finishes installing, you have to create a `config.cnf` file in the root of this repository. This `config.cnf` file must be a json-valid file with the following structure:
 
 ```
 {
@@ -34,8 +48,8 @@ This server exposes a REST API. In order to create a new transaction for a speci
 {
         "amount" : AMOUNT TO PAY IN SATOSHI,
         "description" : "A DESCRIPTION OF THE PRODUCT FOR THE PAYMENT FRONTEND. HTML IS VALID",
-        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
-        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
+        "username" : "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" : "PASSWORD OF THE PLATFORM ADMINISTRATOR"
  }
 ```
 To the endpoint /api/transactions/create. This request will return an object in json format with a property called "_id". This property will contain the transaction id and is needed to check the status of the transaction.
@@ -61,8 +75,8 @@ To perform administration tasks such as redeeming the money from the wallet, ope
 To cancel a specific transaction, perform a HTTP POST request to the endpoint /api/transactions/TRANSACTION_ID/cancel with the following structure:
 ```
 {
-        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
-        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
+        "username" : "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" : "PASSWORD OF THE PLATFORM ADMINISTRATOR"
  }
 ```
 This request will change the state to EXPIRED.
@@ -72,8 +86,8 @@ This request will change the state to EXPIRED.
 To delete a specific transaction, perform a HTTP DELETE request to the endpoint /api/transactions/TRANSACTION_ID with the following structure: 
 ```
 {
-        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
-        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
+        "username" : "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" : "PASSWORD OF THE PLATFORM ADMINISTRATOR"
  }
 ```
 This request will remove the transaction from the database.
