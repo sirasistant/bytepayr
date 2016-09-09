@@ -75,8 +75,8 @@ To perform administration tasks such as redeeming the money from the wallet, ope
 To cancel a specific transaction, perform a HTTP POST request to the endpoint /api/transactions/TRANSACTION_ID/cancel with the following structure:
 ```
 {
-        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
-        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
+        "username" : "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" : "PASSWORD OF THE PLATFORM ADMINISTRATOR"
  }
 ```
 This request will change the state to EXPIRED.
@@ -86,8 +86,8 @@ This request will change the state to EXPIRED.
 To delete a specific transaction, perform a HTTP DELETE request to the endpoint /api/transactions/TRANSACTION_ID with the following structure: 
 ```
 {
-        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
-        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
+        "username" : "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" : "PASSWORD OF THE PLATFORM ADMINISTRATOR"
  }
 ```
 This request will remove the transaction from the database.
