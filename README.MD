@@ -19,7 +19,7 @@ How to start a BytePayr server:
 Download or clone the [ByteWallet](https://github.com/sirasistant/ByteWallet) repository, and follow the README instructions to deploy it in you machine.
 Once you have your socket-based wallet running, download or clone this repository in your machine.
 Go to the folder containing this repository, and issue the command `npm install`. You should have a working version of Node.JS and NPM installed in your system.
-When it finishes installing, you have to create a config.cnf file in the root of this repository. This config.cnf file must be a json-valid file with the following structure:
+When it finishes installing, you have to create a `config.cnf` file in the root of this repository. This `config.cnf` file must be a json-valid file with the following structure:
 
 ```
 {
