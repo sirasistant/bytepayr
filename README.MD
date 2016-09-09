@@ -9,8 +9,8 @@ When it finishes installing, you have to create a config.cnf file in the root of
 
 ```
 {
- 	"username" : "PUT HERE THE USERNAME OF THE ADMINISTRATOR",
- 	"password" : "PUT HERE THE PASSWORD OF THE ADMINISTRATOR",
+ 	"username" : "PUT HERE THE USERNAME OF THE PLATFORM ADMINISTRATOR",
+ 	"password" : "PUT HERE THE PASSWORD OF THE PLATFORM ADMINISTRATOR",
  	"minimumConfirmations": PUT HERE THE NUMBER OF CONFIRMATIONS NEEDED TO VALIDATE A TRANSACTION,
  	"secret"   : "PUT HERE A RANDOM SECRET FOR THE COOKIE ENCRYPTION SYSTEM",
  	"connector":{
@@ -26,14 +26,16 @@ To start this server, issue the command `node app.js`
 
 # Usage
 
+## REST
+
 This server exposes a REST API. In order to create a new transaction for a specific client, you have to perform a HTTP POST request with a json payload with this structure:
-function create_btepayr_request($address, $amount, $description, $username, $password)
+
 ```
 {
         "amount" : AMOUNT TO PAY IN SATOSHI,
         "description" : "A DESCRIPTION OF THE PRODUCT FOR THE PAYMENT FRONTEND. HTML IS VALID",
-        "username" => "USERNAME OF THE ADMINISTRATOR",
-        "password" => "PASSWORD OF THE ADMINISTRATOR"
+        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
  }
 ```
 To the endpoint /api/transactions/create. This request will return an object in json format with a property called "_id". This property will contain the transaction id and is needed to check the status of the transaction.
@@ -52,7 +54,56 @@ To check the status of a specific transaction, perform a HTTP GET request to the
 }
 ```
 
-## [License]
+If you want the user to be redirected to a payment frontend with all the details of the transaction, redirect his browser to the root hostname of the platform with the following query string: `?transaction=TRANSACTION_ID&backurl=BACK_URL&successurl=SUCCESS_URL` .
+
+To perform administration tasks such as redeeming the money from the wallet, open in your browser de address of the platform followed by the `/admin` path. This path contains the administration tool protected by user and password.
+
+To cancel a specific transaction, perform a HTTP POST request to the endpoint /api/transactions/TRANSACTION_ID/cancel with the following structure:
+```
+{
+        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
+ }
+```
+This request will change the state to EXPIRED.
+
+
+
+To delete a specific transaction, perform a HTTP DELETE request to the endpoint /api/transactions/TRANSACTION_ID with the following structure: 
+```
+{
+        "username" => "USERNAME OF THE PLATFORM ADMINISTRATOR",
+        "password" => "PASSWORD OF THE PLATFORM ADMINISTRATOR"
+ }
+```
+This request will remove the transaction from the database.
+
+## Socket.IO
+
+This platform also exposes a Socket.IO API. If you want to get updates on the transaction state, connect to the server and send an event with name `subscribe` with the following payload:
+
+```
+{
+  transaction: "TRANSACTION_ID"
+}
+```
+
+When your socket is subscribed to one or multiple transactions, you'll receive events with the name `transactionUpdate` whenever one of them gets updated. The payload of this event is a transaction object:
+
+```
+{
+  "_id": "IDENTIFIER OF THE TRANSACTION",
+  "amount": AMOUNT TO RECEIVE IN SATOSHI,
+  "address": "THE BITCOIN ADDRESS WHERE THE USER SHOULD SEND THE MONEY",
+  "description": "THE DESCRIPTION SET ON CREATION",
+  "paid": AMOUNT CONFIRMED,
+  "unconfirmed": AMOUNT AWAITING CONFIRMATION,
+  "state": "AWAITING_PAYMENT, PAID, EXPIRED",
+  "createdAt": "TIMESTAMP"
+}
+```
+
+# License
 
 The MIT License (MIT)
 Copyright (c) 2016 Álvaro Rodríguez Villalba https://github.com/sirasistant
