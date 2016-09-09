@@ -16,6 +16,8 @@
     "body-parser": "^1.14.2",
     "check-types": "^6.0.0",
     "express": "^4.13.4",
+    "express-brute": "^1.0.0",
+    "express-brute-mongo": "^0.1.0",
     "express-session": "^1.13.0",
     "fs": "0.0.2",
     "http": "0.0.0",
