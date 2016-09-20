@@ -46,6 +46,7 @@ var updateAllTransactions = function(callback){
 };
 
 socket.on('newBlock',function(){
+    console.log("New block received");
     updateAllTransactions(function(err){
        console.log("New block processed");
     });
